@@ -7,16 +7,28 @@
   <title>Vue 3 Tutorial</title>
   <!-- step one get vue src -->
   <script src="https://unpkg.com/vue@next"></script>
+  <style>
+    html,body{
+        height: 100%;
+    }
+
+    body{
+        display: grid;
+        place-items: center;
+    }
+
+    .text-red{
+        color: red;
+    }
+    .text-green{
+        color: green;
+    }
+  </style>
 </head>
 <body>
-  <div id="app">
 
-    <p>
-        <label for="greeting">greeting: </label>
-        <input type="text" v-model="greeting" id="greeting">
-    </p>
-    <p>{{ greeting }} ({{ greeting.length }})</p>
-    
+  <div id="app">
+      <button :class="active ? 'text-green' : 'text-red' " @click="toggle">Click me</button>
   </div>
 
   <script>
@@ -24,15 +36,15 @@
     Vue.createApp({
       data(){
         return {
-          greeting:'Hello Wold'
+          active:false
+
         };
       },
-      mounted(){
-        setTimeout(()=>{
-            this.greeting = 'changed';
-        }, 2000)
+      methods:{
+        toggle(){
+            this.active = !this.active
+        }
       }
-
     }).mount('#app')
   </script>
 </body>
