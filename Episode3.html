@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lists, Conditionals and Computed Properties</title>
+  <!-- step one get vue src -->
+  <script src="https://unpkg.com/vue@next"></script>
+
+<!-- import tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body class="h-full grid place-items-center">
+
+  <div id="app">
+  <section>
+    <h2 class="font-bold">Completed</h2>
+    <ul>
+      <li></li>
+    </ul>
+
+  </section>
+  </div>
+
+  <script>
+    let app = {
+      data(){
+        return {
+          assignments:{
+            name:'Do Home Work',           }
+        };
+      },
+      methods:{
+        toggle(){
+        this.active = !this.active
+        }
+      }
+
+    }
+    //Initialize vue App
+    Vue.createApp(app).mount('#app')
+  </script>
+</body>
+
+</html>
