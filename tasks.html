@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tasks</title>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+
+</head>
+<body class="h-full grid place-items-center">
+  
+  <div id="app">
+        
+  <section v-show="notCompletedTasks.length">
+      <h2 class="font-bold">Not completed Tasks</h2>
+      <ul class="mt-2">
+        <li v-for="t in notCompletedTasks" :key="t.id">
+          <label>
+            {{ t.name }}
+            <input type="checkbox" v-model="t.completed">
+          </label>
+        </li>
+      </ul>
+    </section>
+    
+    <section v-show="CompletedTasks.length" class="mt-8">        
+        <h2 class="font-bold"> completed Tasks</h2>
+        
+        <ul class="mt-2">
+          <li v-for="t in CompletedTasks" :key="t.id">
+            <label>
+              {{ t.name }}
+              <input type="checkbox" v-model="t.completed">
+            </label>
+          </li>
+        </ul>
+    </div>
+  </section>
+  
+
+
+
+<script>
+
+  let app = {
+    data() {
+      return {
+        tasks:[
+          {name:'in corporate computed properties',completed:false,id:1},
+          {name:'use of conditional',completed:false,id:2},
+          {name:'use of loop',completed:false,id:3},
+          {name:'Must not have any double selection issues',completed:false,id:4},
+          {name:'the list under uncompleted  must have a check box and disappears when clicked as completed and reappears under completed',completed:false,id:5},
+        ]
+      }
+    },
+    computed:{
+        notCompletedTasks(){
+          return this.tasks.filter(t=>!t.completed)
+        },
+        CompletedTasks(){
+          return this.tasks.filter(t=>t.completed)
+        }
+
+    }
+  }
+
+  Vue.createApp(app).mount('#app')
+</script>
+
+</body>
+</html>
